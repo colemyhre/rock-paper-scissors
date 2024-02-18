@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Rock Paper Scissors</title>
+        <meta charset = "utf-8">
+
+    </head>
+    <body>
+        <script>
+
+            function getComputerChoice () {
+                let choices = ["Rock","Paper","Scissors"];
+                let computerChoice = choices[Math.floor(Math.random()*choices.length)];
+                return computerChoice;
+            }
+
+            function playRound () {
+                let computerChoice = getComputerChoice().toUpperCase();
+                let playerChoice = prompt("Please choose Rock, Paper, or Scissors","Rock").toUpperCase();
+                console.log(computerChoice);
+                console.log(playerChoice);
+                if (computerChoice === playerChoice) {
+                    return "Draw!";
+                }
+                else if ((computerChoice === "ROCK" && playerChoice === "PAPER") || (computerChoice === "SCISSORS" && playerChoice === "ROCK") || (computerChoice === "PAPER" && playerChoice === "SCISSORS")) {
+                    return "You Win!";
+                }
+                else {
+                    return "Computer Wins";
+                }
+            }
+
+
+        </script>
+    </body>
+</html>
