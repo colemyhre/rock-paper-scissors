@@ -7,7 +7,10 @@
     </head>
     <body>
         <script>
-
+            let win=0;
+            let draw=0;
+            let loss=0;
+                
             function getComputerChoice () {
                 let choices = ["Rock","Paper","Scissors"];
                 let computerChoice = choices[Math.floor(Math.random()*choices.length)];
@@ -20,31 +23,35 @@
                 let result;
                 console.log(computerChoice);
                 console.log(playerChoice);*/
-                let win;
-                let draw;
-                let loss;
+                
                 
                 if (computerChoice === playerChoice) {
                     result = "Draw";
-                    draw++;
+                    draw = draw+1;
                     return result;
+                    
                 }
                 else if ((computerChoice === "ROCK" && playerChoice === "PAPER") || (computerChoice === "SCISSORS" && playerChoice === "ROCK") || (computerChoice === "PAPER" && playerChoice === "SCISSORS")) {
                     result = "You Win!";
-                    win++
+                    win = win+1;
                     return result;
+                    
                 }
                 else {
                     result = "Computer Wins";
-                    loss++;
+                    loss = loss+1;
                     return result;
+                    
                 }   
             }
 
             function playGame () {
-                let win = 0;
-                let loss = 0;
-                let draw = 0;
+                win = 0;
+                loss = 0;
+                draw = 0;
+                console.log(win);
+                console.log(loss);
+                console.log(draw);
 
                 for (i=1; i<=5; i++) {
                   let computerChoice = getComputerChoice().toUpperCase();
