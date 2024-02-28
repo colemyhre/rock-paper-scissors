@@ -1,0 +1,15 @@
+h1 {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.rps {
+    padding: 15px;
+    border: 2px solid red;
+}
+
