@@ -1,32 +1,66 @@
 let playerChoice = '';
 let computerChoice = '';
 let playerScore = 0;
-let compScore = 0;
+let computerScore = 0;
+let gameover = 0;
 
 
 
-let btn = document.querySelector('button');
-console.log(typeof(btn));
+let container = document.querySelector('.container');
+let playerScoreText = document.querySelector('.playerScore');
+let computerScoreText = document.querySelector('.computerScore');
+let final = document.querySelector('.final');
+console.log(final);
 
-btn.addEventListener('click', () => {
-    console.log('hello');
+
+container.addEventListener('click', (event) => {
+    if (gameover === 1) {
+        computerScore = 0;
+        playerScore = 0;
+        final.textContent = '';
+        gameover = 0;
+    } 
+        let target = event.target;
+        playerChoice = target.textContent;
+        console.log(playerChoice);
+        computerChoice = getComputerChoice();
+        console.log(computerChoice);
+        let result = playRound(computerChoice, playerChoice);
+        console.log(result);
+
+        switch(result) {
+            case 'draw':
+                console.log('Draw');
+                break;
+            case 'win':
+                playerScore+=1;
+                
+                break;
+            case 'loss':
+                computerScore+=1;
+                
+                break;
+            default:
+                console.log('oops');
+        }
+
+        playerScoreText.textContent = 'Player Score: ' + playerScore;
+        console.log(playerScoreText);
+        computerScoreText.textContent = 'Computer Score: ' + computerScore;
+        console.log(computerScoreText);
+
+        if (playerScore == 5) {
+            gameover = 1;
+            final.textContent = "You Win!!";
+        } else if (computerScore == 5) {
+            gameover = 1;
+            final.textContent = "Computer Wins";
+        }
+        
+
     
-    // playerChoice = btn.textContent;
-    // console.log(playerChoice);
-    // computerChoice = getComputerChoice();
-    // let result = playRound(playerChoice, compChoice);
     
-    // switch(result) {
-    //     case 'draw':
-    //         //code
-    //     case 'win':
-    //         //code
-    //     case 'lose':
-    //         //code
-    //     default:
-    //         //code      
-    // }
-
+  
 
 });
     
@@ -40,21 +74,13 @@ function playRound (computerChoice, playerChoice) {
     
     
     if (computerChoice === playerChoice) {
-        result = "Draw";
-        draw = draw+1;
-        return result;
-        
+        return 'draw';  
     }
-    else if ((computerChoice === "ROCK" && playerChoice === "PAPER") || (computerChoice === "SCISSORS" && playerChoice === "ROCK") || (computerChoice === "PAPER" && playerChoice === "SCISSORS")) {
-        result = "You Win! " + playerChoice +" beats " + computerChoice +"!";
-        win = win+1;
-        return result;
-        
+    else if ((computerChoice === "Rock" && playerChoice === "Paper") || (computerChoice === "Scissors" && playerChoice === "Rock") || (computerChoice === "Paper" && playerChoice === "Scissors")) {
+        return 'win';
     }
     else {
-        result = "Computer Wins. " + computerChoice + " beats " + playerChoice + ".";
-        loss = loss+1;
-        return result;
+        return 'loss';
         
     }   
 }
