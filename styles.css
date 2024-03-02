@@ -13,3 +13,20 @@ h1 {
     border: 2px solid red;
 }
 
+.choices {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    gap: 30px;
+}
+
+.scores, .roundResult {
+    text-align: center;
+    padding: 20px;
+}
+
+.final {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}

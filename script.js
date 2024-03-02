@@ -9,8 +9,10 @@ let gameover = 0;
 let container = document.querySelector('.container');
 let playerScoreText = document.querySelector('.playerScore');
 let computerScoreText = document.querySelector('.computerScore');
+let playerSelect = document.querySelector('.playerSelect');
+let compSelect = document.querySelector('.compSelect');
 let final = document.querySelector('.final');
-console.log(final);
+let roundResult = document.querySelector('.roundResult');
 
 
 container.addEventListener('click', (event) => {
@@ -22,32 +24,29 @@ container.addEventListener('click', (event) => {
     } 
         let target = event.target;
         playerChoice = target.textContent;
-        console.log(playerChoice);
         computerChoice = getComputerChoice();
-        console.log(computerChoice);
         let result = playRound(computerChoice, playerChoice);
-        console.log(result);
 
         switch(result) {
             case 'draw':
-                console.log('Draw');
+                roundResult.textContent = 'Draw!';
                 break;
             case 'win':
                 playerScore+=1;
-                
+                roundResult.textContent = 'Player Wins!';                
                 break;
             case 'loss':
                 computerScore+=1;
-                
+                roundResult.textContent = 'Computer Wins';
                 break;
             default:
                 console.log('oops');
         }
 
         playerScoreText.textContent = 'Player Score: ' + playerScore;
-        console.log(playerScoreText);
         computerScoreText.textContent = 'Computer Score: ' + computerScore;
-        console.log(computerScoreText);
+        playerSelect.textContent = 'Player Selection: ' + playerChoice;
+        compSelect.textContent = 'Computer Selection: ' + computerChoice;
 
         if (playerScore == 5) {
             gameover = 1;
